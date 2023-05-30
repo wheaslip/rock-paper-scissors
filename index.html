@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function game () {
+            console.log ("Let the games begin!");
+            let playerScore = 0;
+            let computerScore = 0;
+
+            for (let i = 0; i < 5; i++) {
+                computerSelection = getComputerChoice();
+                playerSelection = prompt ("Enter your choice: ");
+                result = playRound (playerSelection, computerSelection);
+                console.log (result);
+                if (result.slice(0,8) === "You win!") {
+                    playerScore++;
+                }
+                else if (result.slice(0,8) == "You lose") {
+                    computerScore++
+                }
+            }
+                console.log (`Final score is you: ${playerScore}, and computer: ${computerScore}.`);
+        }
+
+        function getComputerChoice () {
+            let choice = (Math.floor(Math.random()*3));
+            switch (choice) {
+                case 0:
+                    return "Rock";
+                case 1:
+                    return "Scissors";
+                default:
+                    return "Paper";
+            }
+        }
+
+        function playRound (playerSelection, computerSelection) {
+            playerSelection = playerSelection.slice(0,1).toUpperCase() + 
+                playerSelection.slice(1).toLowerCase();
+                
+            if (playerSelection !== "Rock" && playerSelection !== "Scissors" 
+                && playerSelection !== "Paper") {
+                    return "You lose! Illegal Selection!";
+                }
+            
+            if (playerSelection === computerSelection) {
+                return `Tie game! Both players played ${playerSelection}!`;
+            }
+            else if (playerSelection === "Rock") {
+                if (computerSelection === "Paper") {
+                    return "You lose! Paper beats Rock!";
+                }
+                else {
+                    return "You win! Rock beats Scissors!";
+                }
+            }
+            else if (playerSelection === "Scissors") {
+                if (computerSelection === "Rock") {
+                    return "You lose! Rock beats Scissors!";
+                }
+                else {
+                    return "You win! Scissors beat Paper!";
+                }
+            }
+            else if (computerSelection === "Scissors") {
+                return "You lose! Scissors beat Paper!";
+            }
+            else {
+                return "You win! Paper beats Rock!";
+            }
+        }
+    </script>
+</body>
+</html>
