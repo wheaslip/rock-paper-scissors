@@ -5,76 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-        function game () {
-            console.log ("Let the games begin!");
-            let playerScore = 0;
-            let computerScore = 0;
-
-            for (let i = 0; i < 5; i++) {
-                computerSelection = getComputerChoice();
-                playerSelection = prompt ("Enter your choice: ");
-                result = playRound (playerSelection, computerSelection);
-                console.log (result);
-                if (result.slice(0,8) === "You win!") {
-                    playerScore++;
-                }
-                else if (result.slice(0,8) == "You lose") {
-                    computerScore++
-                }
-            }
-                console.log (`Final score is you: ${playerScore}, and computer: ${computerScore}.`);
-        }
-
-        function getComputerChoice () {
-            let choice = (Math.floor(Math.random()*3));
-            switch (choice) {
-                case 0:
-                    return "Rock";
-                case 1:
-                    return "Scissors";
-                default:
-                    return "Paper";
-            }
-        }
-
-        function playRound (playerSelection, computerSelection) {
-            playerSelection = playerSelection.slice(0,1).toUpperCase() + 
-                playerSelection.slice(1).toLowerCase();
-                
-            if (playerSelection !== "Rock" && playerSelection !== "Scissors" 
-                && playerSelection !== "Paper") {
-                    return "You lose! Illegal Selection!";
-                }
-            
-            if (playerSelection === computerSelection) {
-                return `Tie game! Both players played ${playerSelection}!`;
-            }
-            else if (playerSelection === "Rock") {
-                if (computerSelection === "Paper") {
-                    return "You lose! Paper beats Rock!";
-                }
-                else {
-                    return "You win! Rock beats Scissors!";
-                }
-            }
-            else if (playerSelection === "Scissors") {
-                if (computerSelection === "Rock") {
-                    return "You lose! Rock beats Scissors!";
-                }
-                else {
-                    return "You win! Scissors beat Paper!";
-                }
-            }
-            else if (computerSelection === "Scissors") {
-                return "You lose! Scissors beat Paper!";
-            }
-            else {
-                return "You win! Paper beats Rock!";
-            }
-        }
-    </script>
+    <h2 class="header">Rock Paper Scissors!!!</h2>
+    <div class="buttons">
+        <button class="rock"><img src="rock.jpg"></button>
+        <button class="paper"><img src="paper.jpg"></button>
+        <button class="scissors"><img src="scissors.jpg"></button>
+    </div>
+    <div class="score">
+        <div>Score:</div>
+        <div id="humanScore">Humans - 0,</div>
+        <div id="computerScore">Computers - 0.</div>
+    </div>
+    <i><div id="message"></div></i>
+    <h2 id="endMessage"></h2>
+    <button id="play">Initiate game you filthy beast.</button>
 </body>
 </html>

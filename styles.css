@@ -1,0 +1,47 @@
+body {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    font-size: 50px;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+#message {
+    visibility: hidden;
+    padding: 15px;
+    font-size: 28px;
+    font-weight: 800;
+    text-decoration: wavy;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    font-size: 24px;
+    padding-top: 15px;
+    font-weight: 900;
+}
+
+.buttons {
+    display: flex;
+    gap: 32px;
+}
+
+#play {
+    border: 1px black solid;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    font-weight: 900;
+}
